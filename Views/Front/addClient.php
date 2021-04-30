@@ -1,53 +1,50 @@
 <?php //require_once 'topbar.php'?>
 
 <?php
-include_once '../../Model/client.php';
-include_once '../../Controller/clientC.php';
+	include_once '../../Model/clients.php';
+	include_once '../../Controller/clientC.php';
 
-$error = "";
+	$error = "";
 
-// create employe
-$client = null;
+	$client = null;
 
-// create an instance of the controller
-$clientC = new clientC();
+	// create an instance of the controller
+	$clientC = new clientC();
+	if (
 
+		isset($_POST["username"]) &&
+		isset($_POST["password"]) &&
+		isset($_POST["email"]) &&
+		isset($_POST["phone"]) 
 
- if (
+	) {
+		if (
+			!empty($_POST["username"]) &&
+			!empty($_POST["password"]) &&
+			!empty($_POST["email"]) &&
+			!empty($_POST["phone"]) 
+		) {
+			$Client = new Client(
 
-    isset($_POST["prenom"]) &&
-    isset($_POST["nom"]) &&
-    isset($_POST["email"]) &&
-    isset($_POST["adresse"]) &&
-    isset($_POST["tel"]) &&
-    isset($_POST["password"]) 
-    
+				$_POST["username"],
+				$_POST['password'],
+				$_POST['email'],
+				$_POST['phone'],
+				
+			);
+			if( $clientC->verifierClient($_POST["username"]) == 0 )
+			{
+				$clientC->ajouterClient($Client);
+			}
+			else
+			{
+				echo "<script> alert('Username Already Exist') </script>";
+			}
 
-) {
-    if (
-        !empty($_POST["prenom"]) &&
-        !empty($_POST["nom"]) &&
-        !empty($_POST["email"]) &&
-        !empty($_POST["adresse"]) &&
-        !empty($_POST["tel"]) &&
-        !empty($_POST["password"]) 
-    ) {
-        $client = new client(
-
-            $_POST["prenom"],
-            $_POST["nom"],
-            $_POST["email"],
-            $_POST["adresse"],
-            $_POST["tel"],
-            $_POST["password"]
-           
-
-        );
-        $clientC->addClient($client);
-        header('Location:afficherClients.php');
-    } else
-        echo "Missing information";
-}
+			
+		} else
+			echo "Missing information";
+	}
 
 ?>
 
@@ -56,6 +53,7 @@ $clientC = new clientC();
 <html lang="en">
 
 <head>
+
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -79,36 +77,11 @@ $clientC = new clientC();
     <!-- Main CSS-->
     <link href="css/main1.css" rel="stylesheet" media="all">
 </head>
-
-
-
     
-
-
 <body>
 
-    <script type="text/javascript">
-        function test() {
 
-            if (document.myform.nom.value.length == 0) {
-
-
-                alert("veuillez remplir le champ");
-
-            }
-
-            if (document.myform.idproduit.value.length == 0) {
-
-
-                alert("veuillez remplir le champ");
-
-            }
-
-        }
-    </script>
-   
-
-    <div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
         <div class="wrapper wrapper--w790">
             <div class="card card-5">
                 <div class="card-heading">
@@ -117,89 +90,65 @@ $clientC = new clientC();
                 <div class="card-body">
                     <form method="POST">
                         <div class="form-row m-b-55">
-                            <div class="name">Name</div>
-                            <div class="value">
-                                <div class="row row-space">
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="nom">
-                                            <label class="label--desc">first name</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-2">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="prenom">
-                                            <label class="label--desc">last name</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Email</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="email" name="email">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Adresse</div>
-                            <div class="value">
-                                <div class="input-group">
-                                    <input class="input--style-5" type="text" name="adresse">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="name">Phone</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                   
-                                    <div class="col-9">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="tel">
-                                            <label class="label--desc">Phone Number</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-						<div class="form-row">
-                            <div class="name">Password</div>
-                            <div class="value">
-						<div class="row row-refine">
-						<div class="col-9">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="password" name="password">
-                                            <label class="label--desc">Password</label>
-                        </div>
-						</div>
-						</div>
-						</div>
-						</div>
-						
-                        
-                        <div>
-                            <button class="btn btn--radius-2 btn--red" type="submit">Register</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+					<form method="post" action="" id="form" class="appointment-form">
+						<h3 class="mb-3">Créer un compte</h3>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="name" name="username" id="username" class="form-control" placeholder="Nom d'utilisateur">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="password" id="password" class="form-control" placeholder="Mot de passe">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="confirmation" id="confirmation" class="form-control" placeholder="Répéter Le Mot de passe">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="email" id="email" class="form-control" placeholder="Email">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="text" name="phone" id="phone" class="form-control" placeholder="Phone">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<input type="submit" value="Enregistrer" name="signup_submit" onclick="verif();" class="btn btn-white py-3 px-4">
+								</div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									<a href="connecter.php"><input type="button" value="J'ai un compte déja" class="btn btn-white py-3 px-4"></a>
+								</div>
+							</div>
 
-    <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
+						</div>
+					</form>
+					
+					<div id="erreur">  </div>
 
-    <!-- Main JS-->
-    <script src="js/global.js"></script>
+  				</div>
 
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+</body>
 
 </html>
-<!-- end document-->

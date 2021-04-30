@@ -1,9 +1,8 @@
 <!-- Sidebar -->
-
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
@@ -15,9 +14,9 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Mekelti</span></a>
+            <span>Dashboard</span></a>
     </li>
 
     <!-- Divider -->
@@ -28,68 +27,33 @@
         Interface
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Components:</h6>
-                <a class="collapse-item" href="buttons.html">Buttons</a>
-                <a class="collapse-item" href="cards.html">Cards</a>
-            </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li>
-
-
-    <!--gestion livraisons -->
+    
 
     <li class="nav-item">
 
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmployes" aria-expanded="true" aria-controls="collapseEmployes">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAdmin" aria-expanded="true" aria-controls="collapseAdmin">
             <i class=""></i>
-            <span>Employés</span>
+            <span>Admins</span>
         </a>
-        <div id="collapseEmployes" class="collapse" aria-labelledby="headingEmployes" data-parent="#accordionSidebar">
+        <div id="collapseAdmin" class="collapse" aria-labelledby="headingAdmin" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Gérer les employés:</h6>
-                <a class="collapse-item" href="ajouterEmploye.php">Ajouter un employé</a>
-                <a class="collapse-item" href="afficherEmployes.php">Afficher les employés</a>
-
+                <h6 class="collapse-header">Gérer Les admins</h6>
+                <a class="collapse-item" href="ajouterAdmin.php">Ajouter un Admin</a>
+                <a class="collapse-item" href="afficherAdmin.php">Afficher Les Admins</a>
             </div>
         </div>
-<!-- commandes -->
+
+
+
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseClients" aria-expanded="true" aria-controls="collapseClients">
             <i class=""></i>
             <span>Clients</span>
         </a>
-        <div id="collapseClients" class="collapse" aria-labelledby="headingEmployes" data-parent="#accordionSidebar">
+        <div id="collapseClients" class="collapse" aria-labelledby="headingClients" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gérer les clients:</h6>
-                <a class="collapse-item" href="addClient.php">Ajouter un client</a>
-                <a class="collapse-item" href="afficherClients.php">Afficher les clients</a>
+                <a class="collapse-item" href="ajouterClient.php">Ajouter un Client</a>
+                <a class="collapse-item" href="afficherClients.php">Afficher Les clients</a>
 
             </div>
         </div>
@@ -156,4 +120,3 @@
 
 </ul>
 <!-- End of Sidebar -->
-
