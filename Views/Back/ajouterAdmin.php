@@ -1,20 +1,12 @@
 <?php
-	session_start(); 
-?>
-
-<?php
-	if( $_SESSION["etat"] != 1)
-	{
-		echo "<script type='text/javascript'>";
-            echo "alert('Please login first!');
-            window.location.href='login.php';";
-		echo "</script>";
-		
-	}
-    else
-    {
-        $cc =  $_SESSION["username"];
-    }
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
 ?>
 
 <?php
@@ -23,10 +15,10 @@ include_once '../../Controller/adminC.php';
 
 $error = "";
 
-// create employe
+
 $admin = null;
 
-// create an instance of the controller
+
 $adminC = new adminC();
 if (
 
@@ -49,6 +41,7 @@ if (
         if( $adminC->verifierAdmin($_POST["username"]) == 0 )
         {
             $adminC->ajouterAdmin($Admin);
+            header('Location: afficherAdmin.php');
         }
         else
         {
@@ -101,7 +94,7 @@ if (
             <div id="content">
 
                 <!-- Topbar -->
-                    <?php $usr=$cc; include "topbar.php"; ?>
+                <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -122,7 +115,7 @@ if (
                         </div>
 
                         <div class="form-group">
-                            <label for="prenom">Retapez le mot de passe</label>
+                            <label for="prenom">Confirmer le mot de passe</label>
                             <input type="text" class="form-control" name="confirmation" id="confirmation" placeholder="Mot de passe" required>
                         </div>
 
@@ -131,7 +124,7 @@ if (
                             <input type="text" class="form-control" name="email" id="email" placeholder="Email" required>
                         </div>
 
-                        <button type="submit" value="Envoyer" class="btn btn-primary"  onclick="verif();">Ajouter</button>
+                        <button type="submit" value="Envoyer" class="btn btn-primary">Ajouter</button>
 
                     </form>
                     <br>

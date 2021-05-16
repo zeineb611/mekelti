@@ -6,7 +6,7 @@ class Client
     private $password;
     private $email;
     private $phone;
-    private $idAdmin;   
+    
 
     public function getUsername()
     {
@@ -24,11 +24,7 @@ class Client
     {
         return $this->phone;
     }
-    public function getIdAdmin()
-    {
-        return $this->idAdmin;
-    }
-
+    
 
     public function setUsername($username)
     {
@@ -46,18 +42,15 @@ class Client
     {
         $this->phone = $phone;
     }
-    public function setIdAdmin($idAdmin)
-    {
-        $this->idAdmin = $idAdmin;
-    }
+  
 
 
-    public function __construct($username , $password , $email , $phone , $idAdmin)
+    public function __construct($username , $password , $email , $phone )
     {
         $this->username = $username;
         $this->password = $password;
         $this->email = $email;
         $this->phone = $phone;
-        $this->idAdmin = $idAdmin;
+       
     }
 }

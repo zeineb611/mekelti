@@ -1,49 +1,31 @@
-<?php //require_once 'topbar.php'?>
+
 
 <?php
+session_start();
 include_once '../../Model/admin.php';
-include_once '../../Controller/AdminC.php';
+include_once '../../Controller/adminC.php';
 
 
 $error = "";
 
-// create employe
-$client = null;
 
-// create an instance of the controller
+
+$message="";
 $adminC = new adminC();
-if (
-
-    isset($_POST["username"]) &&
-    isset($_POST["password"]) 
-
-) {
-    if (
-        !empty($_POST["username"]) &&
-        !empty($_POST["password"]) 
-    ) {
-
-		if($adminC->connecterAdmin($_POST["username"] , $_POST["password"]) != false)
-		{
-			session_start();
-            $admin=$adminC->recupererAdminUS($_POST["username"]);        
-            $_SESSION['username'] = $admin['username'];
-            $_SESSION['id'] = $admin['id'];
-			$_SESSION['etat'] = 1;
-			//echo '<a href="../index.php?link=' . $etat . '></a>';
-			header("Location: index.php?login=success");
-			exit();
-
-		}
-		else
-		{
-			echo "<script> alert('Wrong Informations!') </script>";
-		}
-        
-    } else
-        echo "Missing information";
-}
-
+if (isset($_POST["username"]) &&
+    isset($_POST["password"])) {
+    if (!empty($_POST["username"]) &&
+        !empty($_POST["password"]))
+    {   $message=$adminC->connexionAdmin($_POST["username"],$_POST["password"]);
+         $_SESSION['e'] = $_POST["username"];// on stocke dans le tableau une colonne ayant comme nom "e",
+        //  avec l'email à l'intérieur
+        if($message!='pseudo ou le mot de passe est incorrect'){
+           header('Location:index.php');}
+        else{
+            $message='pseudo ou le mot de passe est incorrect';
+        }}
+    else
+        $message = "Missing information";}
 ?>
 
 <!DOCTYPE html>

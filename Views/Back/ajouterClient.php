@@ -1,20 +1,12 @@
 <?php
-	session_start(); 
-?>
-
-<?php
-	if( $_SESSION["etat"] != 1)
-	{
-		echo "<script type='text/javascript'>";
-            echo "alert('Please login first!');
-            window.location.href='login.php';";
-		echo "</script>";
-		
-	}
-    else
-    {
-        $admin =  $_SESSION["username"];
-    }
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
 ?>
 
 <?php
@@ -47,12 +39,13 @@ if (
             $_POST["username"],
             $_POST['password'],
             $_POST['email'],
-            $_POST['phone'],
-            $_SESSION['id']
+            $_POST['phone']
+        
         );
         if( $clientC->verifierClient($_POST["username"]) == 0 )
         {
             $clientC->ajouterClient($Client);
+            header('Location: afficherClients.php');
         }
         else
         {
@@ -77,7 +70,7 @@ if (
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Ajouter Employe</title>
+    <title>mekelti</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -105,7 +98,7 @@ if (
             <div id="content">
 
                 <!-- Topbar -->
-                    <?php $usr=$admin; include "topbar.php"; ?>
+                <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->

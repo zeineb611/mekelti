@@ -1,20 +1,12 @@
 <?php
-	session_start(); 
-?>
-
-<?php
-	if( $_SESSION["etat"] != 1)
-	{
-		echo "<script type='text/javascript'>";
-            echo "alert('Please login first!');
-            window.location.href='login.php';";
-		echo "</script>";
-		
-	}
-    else
-    {
-        $admin =  $_SESSION["username"];
-    }
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
 ?>
 
 <?php 
@@ -59,7 +51,7 @@
                 <div id="content">
 
                     <!-- Topbar -->
-                        <?php $usr=$admin; include "topbar.php"; ?>
+                    <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
                     <!-- End of Topbar -->
 
                     <!-- Begin of container-fluid -->
@@ -87,14 +79,14 @@
                             //trie
                             if(isset($_GET['trie']))
                             {
-                                $listeAdmins = $adminC->trieCroissant($page, $perpage);
+                                $listeAdmins = $adminC->triCroissant($page, $perpage);
                             }
                             
                         ?> 
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Tableau Admin</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Tableau des Admins </h6>
                             </div>
                             <div class="card-body">
 
@@ -122,7 +114,7 @@
                                                     </th>
                                                     <th>
                                                         <form method="get" action="afficherAdmin.php">
-                                                            <button type="submit" class="btn btn-primary" name="tri">Tri</button>
+                                                            <button type="submit" class="btn btn-primary" name="trie">Trie</button>
                                                         </form>
                                                     </th>
 

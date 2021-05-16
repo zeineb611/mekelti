@@ -37,19 +37,24 @@
             }
         }
 
-        public function connecterAdmin($username , $password)
-        {
-            $sql = "SELECT * from admin where username='$username' and password='$password' ";
+        function connexionAdmin($username,$password){
+            $sql="SELECT * FROM admin  WHERE username ='" . $username . "' and Password = '". $password."'";
             $db = config::getConnexion();
-            try {
-                $query = $db->prepare($sql);
+            try{
+                $query=$db->prepare($sql);
                 $query->execute();
-    
-                $user = $query->fetch();
-                return $user;
-            } catch (Exception $e) {
-                return false;
+                $count=$query->rowCount();
+                if($count==0) {
+                    $message = "pseudo ou le mot de passe est incorrect";
+                } else {
+                    $x=$query->fetch();
+                    $message = $x['role'];
+                }
             }
+            catch (Exception $e){
+                    $message= " ".$e->getMessage();
+            }
+          return $message;
         }
 
 
@@ -119,20 +124,7 @@
             }
         }
 
-        public function recupererAdminUS($username)
-        {
-            $sql = "SELECT * from admin where username='$username' ";
-            $db = config::getConnexion();
-            try {
-                $query = $db->prepare($sql);
-                $query->execute();
-    
-                $user = $query->fetch();
-                return $user;
-            } catch (Exception $e) {
-                die('Erreur: ' . $e->getMessage());
-            }
-        }
+      
 
         public function recherche($search_value)
         {
@@ -167,7 +159,7 @@
             }
         }
 
-        public function trieCroissant($page, $perPage)
+        public function triCroissant($page, $perPage)
         {
             $start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
             $sql = "SELECT * FROM admin order by username LIMIT {$start},{$perPage}";
