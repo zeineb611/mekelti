@@ -1,11 +1,16 @@
-<?PHP
-	require_once "../../Controller/clientC.php";
+<?php
+    include "../../Controller/clientC.php";
 
-	$clientc=new clientc();
-	
-	if (isset($_POST["id"])){
-		$clientc->supprimerClient($_POST["id"]);
-		header('Location:afficherClients.php');
-	}
+    $clientC = new clientC();
 
+    if (isset($_POST['id'])) 
+    {
+        $clientC->supprimerClient($_POST['id']);
+        header('location: afficherClients.php');
+    }
+    else
+    {
+        echo 'Erreur : try again';
+        echo $_POST['id'];
+    }
 ?>

@@ -1,11 +1,16 @@
+<?php
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
+?>
 
 <?php 
     require_once "../../Controller/clientC.php"; 
-   
-    
-    $clientC=new clientC();
-	$listeclient=$clientC->afficherClient(); 
-
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +24,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Afficher clients</title>
+        <title>Afficher Clients</title>
 
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -45,118 +50,129 @@
                 <!-- Main Content -->
                 <div id="content">
 
+                    <!-- Topbar -->
+                    <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
+                    <!-- End of Topbar -->
+
                     <!-- Begin of container-fluid -->
                     <div class="container-fluid">
-                        <?php
+
+                        <?PHP
 
                             //pagination
 
                             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-                            $perpage = isset($GET['per-page']) && $_GET['per-page'] <= 50 ? (int)$_GET['per-page'] : 3;
-
-                            //echo $page;
-                            //echo $perpage;
+                            $perpage = isset($GET['per-page']) && $_GET['per-page'] <= 50 ? (int)$_GET['per-page'] : 3 ;
                             $clientC = new clientC();
                             $listeClients = $clientC->pagination($page, $perpage);
                             $totalP = $clientC->calcTotalRows($perpage);
 
-                        ?>
 
-                        <?PHP
+                            //recherche
 
-                            //$listeEmployes = $employeC->afficherEmploye();
-                         //   if(isset($_GET['recherche']))
-                          //  {
-                             //   $search_value=$_GET["recherche"];
-                               // $listeClients=$clientC->recherche($search_value);
-                           // }
-                      //  ?> 
+                            if(isset($_GET['recherche']))
+                            {
+                                $search_value=$_GET["recherche"];
+                                $listeClients=$clientC->recherche($search_value);
+                            }
 
-
-
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border=1 align='center'>
-                            <thead class="thead-dark">
-                                <tr>
-                                <th>id</th>
-				                <th>prenom</th>
-				                <th>nom</th>
-				                 <th>email</th>
-			                     <th>adresse</th> 
-				                <th>téléphone</th>
-				                <th>modifier</th>
-				                <th>supprimer</th>
-                                
-                                    
-                                    
-                                     <!--   <form method="get" action="modifierClient.php" >
-                                            <input type="text" class="float-left" name="recherche" placeholder=" Taper l'ID de l'client">
-                                            <input type="submit" class="btn btn-dark float-right"  value="Chercher">
-                                        </form>
-                                    </th>
-                                </tr>
-                            </thead>-->
-
-                            <?PHP
-                                foreach ($listeClients as $clientC) {
-                            ?>
-
-                            <tr>
-                         
-                            <td>
-                             <?php echo $clientC['id'] ;?>
-                            </td>
-                             <td>
-                             <?php echo $clientC['nom'] ;?>
-                               </td>
-                                <td>
-                            <?php echo $clientC['prenom'] ;?>
-                           </td>
-                             <td>
-                               <?php echo $clientC['email'] ;?>
-                           </td>
-                               <td>
-                           <?php echo $clientC['adresse'] ;?>
-                              </td>
-                              <td>
-                              <?php echo $clientC['tel'] ;?>
-    </td>
-    
-	<td>
-                                    <a  class="btn btn-primary" href="updateClient.php?id=<?PHP echo $clientC['id']; ?>"> Modifier </a>
-                                </td>
-	
-    <td>
-	<form method="POST" action="supprimerClient.php">
-						<input class="btn btn-danger" type="submit" name="supprimer" value="supprimer">
-						<input type="hidden" value=<?PHP echo $clientC['id']; ?> name="id">
-						</form>
-  
-    </td>
-    </tr>
-	                         
-                                <?php 
-                              
-
+                            //trie
+                            if(isset($_GET['trie']))
+                            {
+                                $listeClients = $clientC->trieCroissant($page, $perpage);
+                            }
                             
-                                }
-                            ?>
-                        </table>
+                        ?> 
 
-                        <!--pagination begin-->
-                        <?php
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Tableau des Clients</h6>
+                            </div>
+                            <div class="card-body">
 
-                            for ($x = 1; $x <= $totalP; $x++) :
+                                <div class="table-responsive">
 
-                        ?>
+                                    <div class="row">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Username</th>
+                                                    <th>Password</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th colspan="2">
+                                                        <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="afficherClients.php">
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher un client"
+                                                                    aria-label="Search" aria-describedby="basic-addon2" name="recherche">
+                                                                <div class="input-group-append">
+                                                                    <button class="btn btn-primary" type="submit" value="Chercher">
+                                                                        <i class="fas fa-search fa-sm"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </th>
+                                                    <th>
+                                                        <form method="get" action="afficherClients.php">
+                                                            <button type="submit" class="btn btn-primary" name="trie">Trie</button>
+                                                        </form>
+                                                    </th>
 
-                        <a href="?page=<?php echo $x; ?>&per-page=<?php echo $perpage; ?>"><?php echo $x; ?></a>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?PHP
+                                                    foreach ($listeClients as $row) {
+                                                ?>
 
-                        <?php endfor; ?>
-                        <!--pagination end-->
+                                                <tr>
+                                                    <td><?PHP echo $row['username'];?></td>
+                                                    <td><?PHP echo $row['password']; ?></td>
+                                                    <td><?PHP echo $row['email']; ?></td>
+                                                    <td><?PHP echo $row['phone']; ?></td>
+                                                    <td>
+                                                        <form method="POST" action="supprimerClient.php">
+                                                            <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger">
+                                                            <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
+                                                        </form>
+                                                    </td>
+                                                    <td>
+                                                        <a  class="btn btn-primary" href="modifierClient.php?id=<?PHP echo $row['id']; ?>"> Modifier </a>
+                                                    </td>
+                                                </tr>
+
+                                                <?PHP
+                                                    }
+                                                ?>
+                                            </tbody>
+
+                                        </table>
+                                    </div>
+
+                                    <div class="row">
+                                        <nav>
+                                            <ul class="pagination">
+                                                <?php
+
+                                                    for ($x = 1; $x <= $totalP; $x++) :
+
+                                                ?>
+                                                
+                                                <li class="page-item">
+                                                    <a class="page-link" href="?page=<?php echo $x; ?>&per-page=<?php echo $perpage; ?>"><?php echo $x; ?></a><?php endfor; ?>
+                                                </li>
+
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                     <!-- End of container-fluid -->
-
 
                 </div>
                 <!-- End of Main Content -->
