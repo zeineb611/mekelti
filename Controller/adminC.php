@@ -1,5 +1,6 @@
 <?php
-    include "C://xampp/htdocs/mekelti2/config.php";
+    include "C://xampp/htdocs/mekelti/config.php";
+   
 
     class adminC {
 

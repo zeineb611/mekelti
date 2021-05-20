@@ -42,6 +42,30 @@
                 <a class="collapse-item" href="afficherAdmin.php">Afficher Les Admins</a>
             </div>
         </div>
+        <li class="nav-item">
+
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMenu" aria-expanded="true" aria-controls="collapseMenu">
+            <i class=""></i>
+            <span>Menu</span>
+        </a>
+        <div id="collapseMenu" class="collapse" aria-labelledby="headingMenu" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Gérer Les menus</h6>
+                <a class="collapse-item" href="ajouterMenu.php">Ajouter un Menu</a>
+                <a class="collapse-item" href="afficherMenus.php">Afficher Les Menus</a>
+            </div>
+        </div>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePromotion" aria-expanded="true" aria-controls="collapsePromotion">
+            <i class=""></i>
+            <span>Promotions</span>
+        </a>
+        <div id="collapsePromotion" class="collapse" aria-labelledby="headingPromotion" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Gérer Les promotions</h6>
+                <a class="collapse-item" href="ajouterMenu.php">Ajouter une promotion</a>
+                <a class="collapse-item" href="afficherMenus.php">La liste des promotions</a>
+            </div>
+        </div>
 
 
 
