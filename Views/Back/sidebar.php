@@ -60,6 +60,83 @@
 
     </li>
 
+    <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
+                 <i class=""></i>
+                 <span>Événements</span>
+             </a>
+             <div id="collapseEvents" class="collapse" aria-labelledby="headingEvents" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom Events:</h6>
+                     <a class="collapse-item" href="AjouterEvent.php">Ajouter Event</a>
+                     <a class="collapse-item" href="ModifierEvent.php">Modifier Event</a>
+
+                 </div>
+             </div>
+         </li>
+
+         <!--//Go Gestion event.php-->
+         <!--Go Gestion lieus.php-->
+
+         <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLieus" aria-expanded="true" aria-controls="collapseLieus">
+                 <i class=""></i>
+                 <span>Lieus</span>
+             </a>
+             <div id="collapseLieus" class="collapse" aria-labelledby="headingLieus" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom lieus:</h6>
+                     <a class="collapse-item" href="AjouterLieu.php">Ajouter Lieu</a>
+                     <a class="collapse-item" href="ModifierLieu.php">Modifier Lieu</a>
+
+                 </div>
+             </div>
+     </li>
+     <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseproduit" aria-expanded="true" aria-controls="collapseproduit">
+                 <i class=""></i>
+                 <span>Produit</span>
+             </a>
+             <div id="collapseproduit" class="collapse" aria-labelledby="headingproduit" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom lieus:</h6>
+                     <a class="collapse-item" href="BackEndProduit.php">Ajouter produit</a>
+                     <a class="collapse-item" href="ModifierProduit.php">Modifier produit</a>
+
+                 </div>
+             </div>
+     </li>
+
+     <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecommentaire" aria-expanded="true" aria-controls="collapsecommentaire">
+                 <i class=""></i>
+                 <span>Commentaire</span>
+             </a>
+             <div id="collapsecommentaire" class="collapse" aria-labelledby="headingcommentaire" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom commentaire:</h6>
+                     <a class="collapse-item" href="afficherCommentaires.php">afficher commentaire</a>
+                     <a class="collapse-item" href="consultercommentaires.php">Satistique commentaire</a>
+                     <a class="collapse-item" href="AjouterArticle.php">Ajouter commentaire</a>
+
+                 </div>
+             </div>
+     </li>
+     <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapselike" aria-expanded="true" aria-controls="collapselike">
+                 <i class=""></i>
+                 <span>like</span>
+             </a>
+             <div id="collapselike" class="collapse" aria-labelledby="headinglike" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom like:</h6>
+                     <a class="collapse-item" href="statistiqueslikes.php">Satistique like</a>
+                   
+
+                 </div>
+             </div>
+     </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 

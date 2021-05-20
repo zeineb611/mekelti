@@ -80,7 +80,7 @@ $fstring = substr($newstring, $pos + 1, 12);
                             <li <?php if (strcmp($fstring, "blogs.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="blogs.php">Blogs</a></li>
                             <li <?php if (strcmp($fstring, "about.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="about.php">About</a></li>
                             <li <?php if (strcmp($fstring, "contact.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="contact.php">Contact</a></li>
-
+                            <li <?php if (strcmp($fstring, "eventt.php")) { ?> class="desactive" <?php  } else { ?> class="active" <?php  } ?>><a href="eventt.php">Event</a></li>
                         </ul>
                     </nav>
                 </div>

@@ -10,7 +10,7 @@ if (!isset($_COOKIE['showstuff'])) {
 
 <?php
 
-require_once 'C://xampp/htdocs/webprojettest/allfolders/controller/MailC.php';
+require_once 'C://xampp/htdocs/mekelti2/Controller/MailC.php';
 
 $error = "";
 // create mail
@@ -54,7 +54,7 @@ require_once 'header_main.php';
 
 <!-- //dropdown -->
 
-<?php require_once "../../controller/ajouterArticle.php";
+<?php require_once "../../Controller/ajouterArticle.php";
 
 
 $articleC = new articleC();
@@ -93,7 +93,7 @@ if (isset($_GET['num'])) {
 
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="card h-100 bg-white text-black border-danger">
-                <img class="card-img-top" src="images/<?PHP echo $row['urlImage']; ?>" alt="">
+                <img class="card-img-top" Src="../Front/images/<?PHP echo $row['urlImage']; ?>" alt="">
                 <div class="card-body">
                     <h4 class="card-title font-weight-bold mb-2">
                         <?PHP echo $row['titre']; ?>

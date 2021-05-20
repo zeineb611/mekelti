@@ -1,5 +1,5 @@
 <?php
-    include "C://xampp/htdocs/mekelti/config.php";
+    include "C://xampp/htdocs/mekelti2/config.php";
 
     class clientC {
 
@@ -134,6 +134,39 @@
                 $e->getMessage();
             }
         }
+
+
+
+        public function modifierClient2($client, $username)
+        {
+            $db = config::getConnexion();
+            try {
+                
+                $query = $db->prepare(
+                    'UPDATE client SET 
+                            id = :id,
+                            username = :username,
+                            password = :password,
+                            email = :email,
+                            phone = :phone
+                            
+                        WHERE username = :username'
+                );
+                $query->execute([
+                     'id' => $client->getid(),
+                    'username' =>  $username,
+                    'password' => $client->getPassword(),
+                    'email' => $client->getEmail(),
+                    'phone' => $client->getPhone()
+                    
+                                 
+                ]);
+                echo $query->rowCount() . " records UPDATED successfully <br>";
+            } catch (PDOException $e) {
+                $e->getMessage();
+            }
+        }
+
 
         public function recupererClient($id)
         {

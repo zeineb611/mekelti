@@ -7,8 +7,8 @@
 
 
 <?php
-include "../../controller/CommentairesC.php";
-include_once "../../model/Commentaire.php";
+include "../../Controller/CommentairesC.php";
+include_once "../../Model/Commentaire.php";
 
 
 
