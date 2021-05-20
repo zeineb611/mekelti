@@ -2,6 +2,8 @@
 
 class Client
 {
+    
+    private $id;
     private $username;
     private $password;
     private $email;
@@ -24,7 +26,10 @@ class Client
     {
         return $this->phone;
     }
-    
+    public function getid()
+    {
+        return $this->id;
+    }
 
     public function setUsername($username)
     {

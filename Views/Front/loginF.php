@@ -13,15 +13,19 @@ if (isset($_POST["username"]) &&
     if (!empty($_POST["username"]) &&
         !empty($_POST["password"]))
     {   $message=$clientC->connexionClient($_POST["username"],$_POST["password"]);
-         $_SESSION['e'] = $_POST["username"];// on stocke dans le tableau une colonne ayant comme nom "e",
-        //  avec l'email à l'intérieur
+		$clientC = new clientC();
+		$client = $clientC->recupererClientUS($_POST["username"]);
+		$_SESSION['e'] = $_POST["username"];
+		$_SESSION['id'] = $_POST["id"];// 
+       
         if($message!='pseudo ou le mot de passe est incorrect'){
            header('Location:index1.php');}
         else{
-            $message='pseudo ou le mot de passe est incorrect';
+			echo "<script> alert('wrong informations!') </script>";
         }}
     else
-        $message = "Missing information";}
+       
+	echo "Missing information";}
 ?>
 
 
@@ -63,6 +67,15 @@ if (isset($_POST["username"]) &&
 	
 	<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+		<?PHP
+			if (isset($_GET['id'])) {
+
+									$clientC = new clientC();
+									$client = $clientC->recupererClient($_GET['id']);
+								}
+								
+							?>
+
 			<form class="login100-form validate-form" method="post" action="">
 				<span class="login100-form-title p-b-37">
 					Sign In

@@ -3,7 +3,7 @@
     <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav ml-auto">
   
-        <ul class="navbar-nav">
+       
   
         <li class="right" ><?php $usr=$_SESSION["e"]; include "topbarF.php"; ?></li>
         </ul>

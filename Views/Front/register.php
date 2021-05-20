@@ -89,7 +89,7 @@ if (
                     <br>
                     <form method="post" action="" >
                         <div class="input-group">
-                            <input class="input--style-2" type="text" placeholder="Name" name="username" id="username" required>
+                            <input class="input--style-2" type="text" placeholder="Fullname" name="username" id="username" required>
                         </div>
 
                         <div class="input-group">

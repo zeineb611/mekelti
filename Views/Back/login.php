@@ -21,11 +21,14 @@ if (isset($_POST["username"]) &&
         //  avec l'email à l'intérieur
         if($message!='pseudo ou le mot de passe est incorrect'){
            header('Location:index.php');}
-        else{
-            $message='pseudo ou le mot de passe est incorrect';
-        }}
-    else
-        $message = "Missing information";}
+           else
+           {
+               echo "<script> alert('wrong informations!') </script>";
+           }
+           
+       } else
+           echo "Missing informations";
+   }
 ?>
 
 <!DOCTYPE html>
@@ -91,9 +94,7 @@ if (isset($_POST["username"]) &&
                                     <div class="text-center">
                                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                                     </div>
-                                    <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>

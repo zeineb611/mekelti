@@ -1,20 +1,13 @@
-<?php
-	session_start(); 
-?>
 
 <?php
-	if( $_SESSION["etat"] != 1)
-	{
-		echo "<script type='text/javascript'>";
-            echo "alert('Please login first!');
-            window.location.href='login.php';";
-		echo "</script>";
-		
-	}
-    else
-    {
-        $admin =  $_SESSION["username"];
-    }
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
 ?>
 
 
