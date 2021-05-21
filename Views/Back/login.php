@@ -17,8 +17,8 @@ if (isset($_POST["username"]) &&
     if (!empty($_POST["username"]) &&
         !empty($_POST["password"]))
     {   $message=$adminC->connexionAdmin($_POST["username"],$_POST["password"]);
-         $_SESSION['e'] = $_POST["username"];// on stocke dans le tableau une colonne ayant comme nom "e",
-        //  avec l'email à l'intérieur
+         $_SESSION['e'] = $_POST["username"];
+
         if($message!='pseudo ou le mot de passe est incorrect'){
            header('Location:index.php');}
            else
@@ -69,12 +69,12 @@ if (isset($_POST["username"]) &&
                  <br>
                     <!-- Nested Row within Card Body -->
                         <div class="row">
-                        
-                            <div class="col-lg-6 "><h1>      </h1><h1>    </h1><h1>    </h1><img src="img/logo.png" width="300" height="200"></div>
+                        <br>
+                            <div class="col-lg-6 "><h1>     </h1><h1>     </h1><h1>     </h1><h1>     </h1><center><img src="img/1.png" width="300" height="300"></center></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back Mekelti !</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Makelti !</h1>
                                     </div>
 
                                     <form class="user" method="post" action="" id="form">

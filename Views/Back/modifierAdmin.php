@@ -61,7 +61,7 @@ if (
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Modifier Employé</title>
+    <title>Modifier Admins</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

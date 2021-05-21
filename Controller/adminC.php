@@ -124,8 +124,27 @@
                 die('Erreur: ' . $e->getMessage());
             }
         }
+    
 
       
+      
+        public function recupererAdminuser($username)
+        {
+            $sql = "SELECT * from admin where username='$username' ";
+            $db = config::getConnexion();
+            try {
+                $query = $db->prepare($sql);
+                $query->execute();
+    
+                $user = $query->fetch();
+                return $user;
+            } catch (Exception $e) {
+                die('Erreur: ' . $e->getMessage());
+            }
+        }
+
+        
+
 
         public function recherche($search_value)
         {

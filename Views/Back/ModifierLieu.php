@@ -1,3 +1,17 @@
+
+<?php
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
+?>
+
+
+
 <?php require_once "../../controller/ajouterlieu.php"; 
 
 ?>
@@ -39,7 +53,7 @@
             <!-- Main Content -->
             <div id="content">
 
-
+            <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -99,7 +113,7 @@
                                     <td><?PHP echo $row['nomlieu']; ?></td>
                                     
                                     
-                                    <td><img width="100" src="../front/imgg/<?PHP echo $row['imagelieu']; ?> "> </td>
+                                    <td><img width="100" src="../Front/images/<?PHP echo $row['imagelieu']; ?> "> </td>
                                     <td><?PHP echo $row['descriptionlieu']; ?></td>
                                     <td><?PHP echo $row['datelieu']; ?></td>
                                     <td><?PHP echo $row['datelieuf']; ?></td>

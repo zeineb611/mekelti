@@ -39,21 +39,7 @@
             }
         }
 
-       /* public function connecterClient($username , $password)
-        {
-            $sql = "SELECT * from client where username='$username' and password='$password' ";
-            $db = config::getConnexion();
-            try {
-                $query = $db->prepare($sql);
-                $query->execute();
-    
-                $user = $query->fetch();
-                return $user;
-            } catch (Exception $e) {
-                return false;
-            }
-        }*/
-
+       
 
         function connexionClient($username,$password){
             $sql="SELECT * FROM client WHERE username ='" . $username . "' and Password = '". $password."'";

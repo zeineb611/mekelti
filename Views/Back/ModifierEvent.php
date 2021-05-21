@@ -1,4 +1,16 @@
 
+<?php
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
+?>
+
+
 <?php require_once "../../controller/ajouterevent.php"; 
 
 ?>
@@ -39,7 +51,7 @@
 
             <!-- Main Content -->
             <div id="content">
-
+            <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -83,7 +95,7 @@
                
                         <thead class="thead-dark">
                             <tr>
-                            <button type="submit" class="btn btn-primary" name="trie">Trie</button>
+                           <!-- <button type="submit" class="btn btn-primary" name="trie">Trie</button>-->
                                 <th>Id</th>
                                 <th>NomÉvénement</th>
                                 <th>NombrePlaces </th>

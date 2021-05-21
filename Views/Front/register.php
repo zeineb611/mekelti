@@ -99,14 +99,14 @@ if (
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                        <input class="input--style-2" type="text" name="phone" id="phone" class="form-control" placeholder="Phone" required>
+                        <input class="input--style-2" type="text" name="phone" id="phone"  minlength="9" class="form-control" placeholder="Phone" required>
                     </div>
                 </div>
                 </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-2" type="password" id="password" placeholder="Registration Code" name="password" required>
+                                    <input class="input--style-2" type="password" id="password"  minlength="4" placeholder="Registration Code" name="password" required>
                                 </div>
                                 </div>
                                 <div class="col-2">

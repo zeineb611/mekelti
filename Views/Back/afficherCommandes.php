@@ -1,3 +1,8 @@
+
+<?php
+// On prolonge la session
+session_start();
+?>
 <?php 
     require_once "../../Controller/commandeController.php"; 
     $commandes = commandeController::getcommandes();
@@ -16,7 +21,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <button><a href="affichercommande.php?sort=true">Trier per prix</a></button>
+       <!-- <button><a href="affichercommande.php?sort=true">Trier par prix</a></button>-->
 
         <title>Afficher commandes</title>
 
@@ -43,7 +48,7 @@
 
                 <!-- Main Content -->
                 <div id="content">
-
+                <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
                     <!-- Topbar -->
                     <!-- End of Topbar -->
 

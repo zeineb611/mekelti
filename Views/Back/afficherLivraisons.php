@@ -1,3 +1,15 @@
+
+<?php
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
+?>
+
 <?php 
     require_once "../../Controller/livraisonController.php"; 
     $livraisons = livraisonController::getLivraisons();
@@ -39,7 +51,7 @@
 
                 <!-- Main Content -->
                 <div id="content">
-
+                <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
                     <!-- Topbar -->
                     <!-- End of Topbar -->
 
