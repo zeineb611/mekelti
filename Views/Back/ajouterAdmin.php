@@ -110,21 +110,21 @@ if (
                         <div id="error_username" style="color: red;"></div>
 
                         <div class="form-group">
-                            <label for="prenom">Entrer le mot de passe</label>
-                            <input type="text" class="form-control" name="password" id="password" placeholder="Mot de passe" required>
+                            <label for="password">Entrer le mot de passe</label>
+                            <input type="password" class="form-control" name="password" id="password"  minlength="8" placeholder="Mot de passe" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="prenom">Confirmer le mot de passe</label>
-                            <input type="text" class="form-control" name="confirmation" id="confirmation" placeholder="Mot de passe" required>
+                            <label for="password">Confirmer le mot de passe</label>
+                            <input type="password" class="form-control" name="confirmation" id="confirmation" placeholder="Mot de passe" required>
                         </div>
 
                         <div class="form-group">
-                            <label for="age">Entrer l'email</label>
+                            <label for="email">Entrer l'email</label>
                             <input type="text" class="form-control" name="email" id="email" pattern=".+@mekelti.tn" placeholder="Email" required>
                         </div>
 
-                        <button type="submit" value="Envoyer" class="btn btn-primary">Ajouter</button>
+                        <button type="submit" value="Envoyer" class="btn btn-primary" onclick="verif();">Ajouter</button>
 
                     </form>
                     <br>

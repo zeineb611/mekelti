@@ -1,42 +1,53 @@
 
+
 <?php
-include_once '../../Model/events.php';
-include_once '../../Controller/ajouterevent.php';
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
+?>
+
+
+<?php //require_once 'topbar.php'?>
+
+<?php
+include_once '../../Controller/adminC.php';
+include_once '../../Model/admin.php';
+
 
 $error = "";
 
-// create event
-$event = null;
+$admin = null;
 
 // create an instance of the controller
-$eventC = new eventC();
+$adminC = new adminC();
 if (
-    isset($_POST["nomevent"]) &&
-    isset($_POST["nbrplace"]) &&
-    isset($_POST["imageevent"]) &&
-    isset($_POST["descriptionevent"]) 
+
+    isset($_POST["username"]) &&
+    isset($_POST["password"]) &&
+    isset($_POST["email"])
+
 ) {
     if (
-        !empty($_POST["nomevent"]) &&
-        !empty($_POST["nbrplace"]) &&
-        !empty($_POST["imageevent"]) &&
-        !empty($_POST["descriptionevent"]) 
+        !empty($_POST["username"]) &&
+        !empty($_POST["password"]) &&
+        !empty($_POST["email"]) 
     ) {
-        $event = new event(
-            $_POST['nomevent'],
-            $_POST['nbrplace'],
-            $_POST['imageevent'],
-            $_POST['descriptionevent']
+        $Admin = new Admin(
 
+            $_POST['username'],
+            $_POST['password'],
+            $_POST['email']
         );
-        $eventC->ajouterevent($event);
-        //header('Location:../front/blogs.php');
+       
+        header('refresh:2;url=afficherAdmin.php');
     } else
         echo "Missing information";
 }
-
-
-
 
 ?>
 
@@ -51,16 +62,16 @@ if (
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ajouter event</title>
+    <title>Modifier Admins</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-
 <!-- Custom styles for this template-->
 <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <script src="//cdn.ckeditor.com/4.15.1/full/ckeditor.js"></script>
+    <script src="js/controleSaisieAdmin.js"></script>
 </head>
 
 <body id="page-top">
@@ -77,51 +88,52 @@ if (
             <!-- Main Content -->
             <div id="content">
 
-                
-
+                <!-- Topbar -->
+                <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
+                <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+
+                <div id="error">
+                    <?php echo $error; ?>
+                </div>
+
+                <?php
+
+        $admin= $adminC->recupererAdminuser($_SESSION['e']);
+          ?>
+
+
                 <div class="container-fluid">
 
-                    <div>
-                        <form method="post" action="">
-                            <div class="form-group">
-                                <label for="nomevent">Ajouter le nom d'evenment</label>
-                                <input type="text" class="form-control" name="nomevent" id="nomevent" placeholder="Entrer le nomevent">
-                            </div>
+                <br>
+
+                <center><table border="2"></center>
+
+                <tr>
+						<td rowspan='8' colspan='1'>Fiche Personnelle</td>
+						<td>
+                            
+                           username: <input type="text" class="form-control" name="username" id="username" value="<?PHP echo $admin['username']; ?>" required>
+                      
+
+                        <div class="form-group">
+                           
+                            password:<input type="text" class="form-control" name="password" id="password"  value="<?PHP echo $admin['password']; ?>" required>
+                        </div>
+
+                        
+
+                        <div class="form-group">
+                            
+                           email: <input type="email" class="form-control" name="email" id="email" value="<?PHP echo $admin['email']; ?>" required>
+                        </div>
 
                       
 
-
-
-                            <div class="form-group">
-                                <label for="nbrplace">Taper le nombre des places</label>
-                                <input type="number" class="form-control" name="nbrplace">
-                            </div>
-
-                          
-                            <div class="form-group">
-                                <label for="imageevent">Ajouter une nouvelle Image</label>
-                                <input type="file" class="form-control-file" name="imageevent">
-                            </div>
-                      
-                            <div class="form-group">
-                                <label for="descriptionevent"> Description </label>
-                                <input type="text" class="form-control" name="descriptionevent">
-                            </div>
-                           <!-- <script>
-                            CKEDITOR.replace('descriptionevent');
-                        </script>-->
-
-                            <button type="submit" value="Envoyer" class="btn btn-primary">Submit</button>
-
-                        </form>
-                    </div>
-                    
-
-
-
-
+                   </table>
+                    <br>
+                    <div id="erreur"></div>
 
                 </div>
                 <!-- /.container-fluid -->
@@ -170,7 +182,7 @@ if (
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
+    
 </body>
 
 </html>
