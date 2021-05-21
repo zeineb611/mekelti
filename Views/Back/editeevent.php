@@ -1,7 +1,7 @@
 
 <?php
-include_once "../../Controller/ajouterevent.php";
-include_once "../../Model/events.php";
+include "../../controller/ajouterevent.php";
+include_once "../../model/events.php";
 
 
 $eventC = new eventC();
@@ -90,27 +90,27 @@ if (
                         <div>
                             <form method="POST" action="">
                                 <div class="form-group">
-                                    <label for="idevent">idevent</label>
+                                    <label for="idevent">Id de l'événement</label>
                                     <input type="text" class="form-control" name="idevent" id="idevent" value="<?php echo $event['idevent']; ?>" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="nomevent">nomevent</label>
+                                    <label for="nomevent">Nom de l'événement</label>
                                     <input type="text" class="form-control" name="nomevent" id="nomevent" value="<?php echo $event['nomevent']; ?> ">
                                 </div>
 
 
                                 <div class="form-group">
-                                    <label for="nbrplace">nbr places </label>
+                                    <label for="nbrplace">Nombre de places </label>
                                     <input type="number" class="form-control" name="nbrplace" rows="10" <?php echo $event['nbrplace']; ?> >
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="imageevent">imageevent</label>
+                                    <label for="imageevent">Image de l'événement</label>
                                     <input type="file" class="form-control-file"  name="imageevent" value="<?php echo $event['imageevent']; ?> ">
                                 </div>
                                 <div class="form-group">
-                                    <label for="descriptionevent">descriptionevent</label>
+                                    <label for="descriptionevent">Description de l'événement</label>
                                     <textarea type="text" class="form-control" name="descriptionevent" ><?php echo $event['descriptionevent']; ?> </textarea>
                                 </div>
                          

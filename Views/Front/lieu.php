@@ -72,9 +72,9 @@ $listelieu = $lieuC->afficherlieu();
                  <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center mb100">
-                            <h2 class="section-heading">Browse <span class="theme-accent-color">The</span> lieus</h2>
+                            <h2 class="section-heading"> <span class="theme-accent-color">The</span> Place</h2>
                             <hr class="thin-hr">
-                            <h3 class="section-subheading secondary-font">Your tastebuds will thank you.</h3>
+                            <h3 class="section-subheading secondary-font">Welcome To makelti</h3>
                         </div>
                     </div>
                 </div>

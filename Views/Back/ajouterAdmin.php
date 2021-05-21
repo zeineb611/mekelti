@@ -121,7 +121,7 @@ if (
 
                         <div class="form-group">
                             <label for="age">Entrer l'email</label>
-                            <input type="text" class="form-control" name="email" id="email" placeholder="Email" required>
+                            <input type="text" class="form-control" name="email" id="email" pattern=".+@mekelti.tn" placeholder="Email" required>
                         </div>
 
                         <button type="submit" value="Envoyer" class="btn btn-primary">Ajouter</button>

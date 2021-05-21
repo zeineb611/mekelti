@@ -1,7 +1,7 @@
 
 <?php
-include_once "../../Controller/ajouterlieu.php";
-include_once "../../Model/lieus.php";
+include "../../controller/ajouterlieu.php";
+include_once "../../model/lieus.php";
 
 
 $lieuC = new lieuC();
@@ -11,7 +11,7 @@ if (
     isset($_POST["imagelieu"]) &&
     isset($_POST["descriptionlieu"])  &&
     isset($_POST["datelieu"])  &&
-    isset($_POST["datelieuf"])  &&
+    isset($_POST["datelieuf"])&&
     isset($_POST["nome"])
 ) {
     if (
@@ -19,7 +19,7 @@ if (
         !empty($_POST["imagelieu"])&&
         !empty($_POST["descriptionlieu"]) &&
         !empty($_POST["datelieu"]) &&
-        !empty($_POST["datelieuf"]) &&
+        !empty($_POST["datelieuf"])&&($_POST["datelieuf"]>$_POST["datelieu"])&&
         !empty($_POST["nome"])
 
     ) {
@@ -29,8 +29,7 @@ if (
             $_POST['descriptionlieu'],
             $_POST['datelieu'],
             $_POST['datelieuf'],
-            $_POST["nome"]
-
+            $_POST['nome']
         );
         $lieuC->modifierlieu($lieu, $_GET['idlieu']);
        // header('Location:../front/');
@@ -96,45 +95,49 @@ if (
                         <div>
                             <form method="POST" action="">
                                 <div class="form-group">
-                                    <label for="idlieu">idlieu</label>
+                                    <label for="idlieu">IdLieu</label>
                                     <input type="text" class="form-control" name="idlieu" id="idlieu" value="<?php echo $lieu['idlieu']; ?>" disabled>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="nomlieu">nom event</label>
+                                    <label for="nomlieu">Modifier le nom de lieu</label>
                                     <input type="text" class="form-control" name="nomlieu" id="nomlieu" value="<?php echo $lieu['nomlieu']; ?> ">
                                 </div>
 
+
+                             
+
                                 <div class="form-group">
-                                    <label for="imagelieu">imagelieu</label>
+                                    <label for="imagelieu">Modifier l'image de lieu</label>
                                     <input type="file" class="form-control-file"  name="imagelieu" value="<?php echo $lieu['imagelieu']; ?> ">
                                 </div>
 
                                 <div class="form-group">
-                                <label for="descriptionlieu">modifier la description du lieu</label>
-                                <input type="text" class="form-control-file"  name="descriptionlieu" value="<?php echo $lieu['descriptionlieu']; ?> ">
+                                <label for="descriptionlieu">Modifier la description du lieu</label>
+                                <input type="text" class="form-control" name="descriptionlieu" id="descriptionlieu"  value="<?php echo $lieu['descriptionlieu']; ?>">
                             </div>
 
                             <div class="form-group">
-                                <label for="datelieu">modifier la Date de debut</label>
-                                <input type="date" class="form-control-file"  name="datelieu" value="<?php echo $lieu['datelieu']; ?> ">
+                                <label for="datelieu">Modifier la Date de debut</label>
+                                <input type="date" class="form-control" name="datelieu" id="datelieu" placeholder="datelieu">
                             </div>
-                            <div class="form-group">
-                                <label for="datelieuf">modifier la Date du fin</label>
-                                <input type="date" class="form-control-file"  name="datelieuf" value="<?php echo $lieu['datelieuf']; ?> ">
+                              <div class="form-group">
+                                <label for="datelieuf">Modifier la Date du fin</label>
+                                <input type="date" class="form-control" name="datelieuf" id="datelieuf" placeholder="datelieufin">
+                              </div>
+                              
+                              <div class="form-group">
+                                <label for="nome">Modifier le nom de l'événement</label>
+                                <input type="text" class="form-control" name="nome" id="nome" placeholder="Entrer le nom">
                             </div>
 
-                          
-                            <div class="form-group">
-                                <label for="datelieuf">nom</label>
-                                <input type="text" class="form-control-file"  name="nome" value="<?php echo $lieu['nome']; ?> ">
-                            </div>
+
 
 
 
                                 <button type="submit" value="Envoyer" class="btn btn-primary">Submit</button>
 
-                            </form>
+                              </form>
                         </div>
                        <!-- <script>
                             CKEDITOR.replace('descriptionlieu');

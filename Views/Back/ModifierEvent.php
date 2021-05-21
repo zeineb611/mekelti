@@ -1,14 +1,5 @@
-<?php
-// On prolonge la session
-session_start();
-// On teste si la variable de session existe et contient une valeur
-if(empty($_SESSION['e']))
-{
-    // Si inexistante ou nulle, on redirige vers le formulaire de login
-    header('Location: login.php');
-   }
-?>
-<?php require_once "../../Controller/ajouterevent.php"; 
+
+<?php require_once "../../controller/ajouterevent.php"; 
 
 ?>
 
@@ -48,7 +39,7 @@ if(empty($_SESSION['e']))
 
             <!-- Main Content -->
             <div id="content">
-            <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
+
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -65,6 +56,10 @@ if(empty($_SESSION['e']))
  $eventC = new eventC();
  $listeevent = $eventC->AffichereventPaginer($page, $perpage);
   $totalP = $eventC->calcTotalRows($perpage);
+  if(isset($_GET['trie']))
+  {
+      $listeevent = $eventtC->triec($page, $perpage);
+  }
 
 
 ?>
@@ -78,20 +73,24 @@ if(empty($_SESSION['e']))
                        {
                         $search_value=$_GET["recherche"];
                         $listeevent=$eventC->recherche($search_value);
-                        }
+                       }
+                       
+                            
+                        
                         ?> 
                                
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" border=1 align='center'>
                
                         <thead class="thead-dark">
                             <tr>
+                            <button type="submit" class="btn btn-primary" name="trie">Trie</button>
                                 <th>Id</th>
-                                <th>nomevent</th>
-                                <th>nbr places </th>
-                                <th>image </th>
-                                <th>description</th>
+                                <th>NomÉvénement</th>
+                                <th>NombrePlaces </th>
+                                <th>Image </th>
+                                <th>DescriptionPlace</th>
                      <th colspan="2"><form method="get" action="ModifierEvent.php" >
-                              <input type="text" class=" btn btn-dark float-right" name="recherche" placeholder=" dans les evenements">
+                              <input type="text" class=" btn btn-dark float-right" name="recherche" placeholder="Nom Événement">
                               <input type="submit" class="btn btn-dark float-right"  value="Chercher">
                           </form></th>
                             </tr>

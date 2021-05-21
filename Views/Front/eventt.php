@@ -68,9 +68,9 @@ $listeevent = $eventC->afficherevent();
                  <div class="container">
                     <div class="row">
                         <div class="col-lg-12 text-center mb100">
-                            <h2 class="section-heading">Browse <span class="theme-accent-color">The</span> Events</h2>
+                            <h2 class="section-heading"> <span class="theme-accent-color">The</span> Events</h2>
                             <hr class="thin-hr">
-                            <h3 class="section-subheading secondary-font">Your tastebuds will thank you.</h3>
+                            <h3 class="section-subheading secondary-font">Welcome To makelti</h3>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@ $listeevent = $eventC->afficherevent();
                             <div class="food-menu-item">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <img  src="images/<?PHP echo $row['imageevent']; ?>" class="img-responsive">
+                                        <img src="images/<?PHP echo $row['imageevent']; ?>" class="img-responsive">
                                     </div>
                                     <div class="col-xs-9">
                                         <h3><?PHP echo $row['nomevent']; ?>                             <span class="theme-accent-color">        <?PHP echo $row['nbrplace']; ?> place</span></h3>
