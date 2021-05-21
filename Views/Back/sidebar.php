@@ -62,8 +62,8 @@
         <div id="collapsePromotion" class="collapse" aria-labelledby="headingPromotion" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Gérer Les promotions</h6>
-                <a class="collapse-item" href="ajouterMenu.php">Ajouter une promotion</a>
-                <a class="collapse-item" href="afficherMenus.php">La liste des promotions</a>
+                <a class="collapse-item" href="ajouterPromotion.php">Ajouter une promotion</a>
+                <a class="collapse-item" href="afficherPromotions.php">La liste des promotions</a>
             </div>
         </div>
 

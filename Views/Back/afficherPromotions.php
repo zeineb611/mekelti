@@ -10,7 +10,7 @@ if(empty($_SESSION['e']))
 ?>
 
 <?php 
-    require_once "../../Controller/menuC.php"; 
+    require_once "../../Controller/promotionC.php"; 
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@ if(empty($_SESSION['e']))
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <title>Afficher Menu</title>
+        <title>Afficher promotion</title>
 
         <!-- Custom fonts for this template-->
         <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -63,9 +63,9 @@ if(empty($_SESSION['e']))
 
                             $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
                             $perpage = isset($GET['per-page']) && $_GET['per-page'] <= 50 ? (int)$_GET['per-page'] : 3 ;
-                            $menuC = new menuC();
-                            $listeMenus = $menuC->pagination($page, $perpage);
-                            $totalP = $menuC->calcTotalRows($perpage);
+                            $promotionC = new promotionC();
+                            $listePromotions = $promotionC->pagination($page, $perpage);
+                            $totalP = $promotionC->calcTotalRows($perpage);
 
 
                             //recherche
@@ -73,20 +73,20 @@ if(empty($_SESSION['e']))
                             if(isset($_GET['recherche']))
                             {
                                 $search_value=$_GET["recherche"];
-                                $listeMenus=$menuC->recherche($search_value);
+                                $listePromotions=$promotionC->recherche($search_value);
                             }
 
                             //trie
                             if(isset($_GET['trie']))
                             {
-                                $listeMenus = $menuC->trieCroissant($page, $perpage);
+                                $listePromotions = $promotionC->trieCroissant($page, $perpage);
                             }
                             
                         ?> 
 
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Tableau des Menus</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">Tableau des Promotions</h6>
                             </div>
                             <div class="card-body">
 
@@ -97,14 +97,13 @@ if(empty($_SESSION['e']))
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Description</th>
-                                                    <th>Prix</th>
-                                                    <th>Ingredients</th>
+                                                    <th>Pourcentage %</th>
+                                                    
                                                     <th>PDF</th>
                                                     <th colspan="2">
                                                         <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" method="get" action="afficherMenus.php">
                                                             <div class="input-group">
-                                                                <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher une menu"
+                                                                <input type="text" class="form-control bg-light border-0 small" placeholder="Rechercher une promotion"
                                                                     aria-label="Search" aria-describedby="basic-addon2" name="recherche">
                                                                 <div class="input-group-append">
                                                                     <button class="btn btn-primary" type="submit" value="Chercher">
@@ -115,7 +114,7 @@ if(empty($_SESSION['e']))
                                                         </form>
                                                     </th>
                                                     <th>
-                                                        <form method="get" action="afficherMenus.php">
+                                                        <form method="get" action="afficherPromotions.php">
                                                             <button type="submit" class="btn btn-primary" name="trie">Trie</button>
                                                         </form>
                                                     </th>
@@ -124,23 +123,23 @@ if(empty($_SESSION['e']))
                                             </thead>
                                             <tbody>
                                                 <?PHP
-                                                    foreach ($listeMenus as $row) {
+                                                    foreach ($listePromotions as $row) {
                                                 ?>
 
                                                 <tr>
                                                     <td><?PHP echo $row['name'];?></td>
-                                                    <td><?PHP echo $row['description']; ?></td>
-                                                    <td><?PHP echo $row['prix']; ?></td>
-                                                    <td><?PHP echo $row['ingredient']; ?></td>
-                                                  <td>  <a class="supprimer" href="pdf_menu.php">PDF</a> </td>
+                                                    <td><?PHP echo $row['pourcentage']; ?></td>
+                                                    
+                                                    
+                                                  <td>  <a class="supprimer" href="pdf_promotion.php">PDF</a> </td>
                                                     <td>
-                                                        <form method="POST" action="supprimerMenu.php">
+                                                        <form method="POST" action="supprimerPromotion.php">
                                                             <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger">
                                                             <input type="hidden" value="<?PHP echo $row['id']; ?>" name="id">
                                                         </form>
                                                     </td>
                                                     <td>
-                                                        <a  class="btn btn-primary" href="modifierMenu.php?id=<?PHP echo $row['id']; ?>"> Modifier </a>
+                                                        <a  class="btn btn-primary" href="modifierPromotion.php?id=<?PHP echo $row['id']; ?>"> Modifier </a>
                                                     </td>
                                                 </tr>
 
