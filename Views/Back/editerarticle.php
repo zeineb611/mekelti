@@ -1,15 +1,16 @@
 <?php require_once "../../Controller/ajouterArticle.php" ?>
-<?php
-session_start();
-// Page was not reloaded via a button press
-if (!isset($_POST['add1'])) {
-    $_SESSION['attnum1'] = 0; // Reset counter
-}
-if (!isset($_POST['add2'])) {
-    $_SESSION['attnum2'] = 0; // Reset counter
-}
 
+<?php
+// On prolonge la session
+session_start();
+// On teste si la variable de session existe et contient une valeur
+if(empty($_SESSION['e']))
+{
+    // Si inexistante ou nulle, on redirige vers le formulaire de login
+    header('Location: login.php');
+   }
 ?>
+
 <?php
 
 //pagination
@@ -82,8 +83,7 @@ if (isset($_GET['recherche'])) {
             <!-- Main Content -->
             <div id="content">
 
-                <?php require_once 'topbar.php';
-                ?>
+            <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
 
 
                 <!-- Begin Page Content -->

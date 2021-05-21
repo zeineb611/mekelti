@@ -1,18 +1,4 @@
-
-<?php
-// On prolonge la session
-session_start();
-// On teste si la variable de session existe et contient une valeur
-if(empty($_SESSION['e']))
-{
-    // Si inexistante ou nulle, on redirige vers le formulaire de login
-    header('Location: login.php');
-   }
-?>
-
-
-
-<?php require_once "../../Controller/ajouterlieu.php"; 
+<?php require_once "../../controller/ajouterlieu.php"; 
 
 ?>
 
@@ -54,7 +40,7 @@ if(empty($_SESSION['e']))
             <div id="content">
 
 
-            <?php $usr=$_SESSION["e"]; include "topbar.php"; ?>
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div>
@@ -92,14 +78,14 @@ if(empty($_SESSION['e']))
                         <thead class="thead-dark">
                             <tr>
                                 <th>Id</th>
-                                <th>Nom Lieu</th>
-                                <th>image </th>
-                                <th>descriptionLieu</th>
+                                <th>NomLieu</th>
+                                <th>Image </th>
+                                <th>DescriptionLieu</th>
                                 <th>DateD</th>
                                 <th>DateF</th>
-                                <th>Nom Evenement</th>
+                                <th>NomEvenement</th>
                      <th colspan="2"><form method="get" action="Modifierlieu.php" >
-                        <input type="text" class=" btn btn-dark float-right" name="recherche" placeholder=" dans les evenements">
+                        <input type="text" class=" btn btn-dark float-right" name="recherche" placeholder=" Nom de lieu">
                              <input type="submit" class="btn btn-dark float-right"  value="Chercher">
                           </form></th>
                             </tr>
@@ -113,13 +99,13 @@ if(empty($_SESSION['e']))
                                     <td><?PHP echo $row['nomlieu']; ?></td>
                                     
                                     
-                                    <td><img width="100" src="../Front/images/<?PHP echo $row['imagelieu']; ?> "> </td>
+                                    <td><img width="100" src="../front/imgg/<?PHP echo $row['imagelieu']; ?> "> </td>
                                     <td><?PHP echo $row['descriptionlieu']; ?></td>
                                     <td><?PHP echo $row['datelieu']; ?></td>
                                     <td><?PHP echo $row['datelieuf']; ?></td>
                                     <td><?PHP echo $row['nome']; ?></td>
                                     <td>
-                                        <form method="POST" action="../../Controller/supprimerlieu.php">
+                                        <form method="POST" action="../../controller/supprimerlieu.php">
                                             <input type="submit" name="supprimer" value="supprimer" class="btn btn-danger">
                                             <input type="hidden" value=<?PHP echo $row['idlieu']; ?> name="idlieu">
                                         </form>

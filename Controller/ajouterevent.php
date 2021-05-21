@@ -159,7 +159,7 @@ class eventC
     }
 
     function triec(){
-        $sql = "SELECT   from evenement a   order by nomevent asc ";
+        $sql = "SELECT * from evenement  order by nomevent asc ";
         
         $db = config::getConnexion();
         try{

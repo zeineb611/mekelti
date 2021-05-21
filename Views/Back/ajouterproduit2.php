@@ -1,3 +1,26 @@
+<?php
+
+    require_once '../../Controller/produitC.php';
+    require_once '../../Model/produit.php';
+    require_once '../../Controller/categorieC.php';
+
+    $produitC =  new produitC();
+    $categorieC = new categorieC();
+    $categories=$categorieC->affichercategorie();
+
+    if (isset($_POST['Nom']) && isset($_POST['image']) && isset($_POST['qty']) && isset($_POST['prix'])) {
+        $produit = new produit($_POST['Nom'], $_POST['image'],$_POST['qty'], (float)$_POST['prix'],$_POST['categorie']);
+
+        $produitC->addproduit($produit);
+
+        header('Location:Ajouterproduit.php');}
+      
+    
+    $produitC=new produitC();
+	$produits=$produitC->afficherproduit();
+  
+
+?>
 
 <?php
 // On prolonge la session
@@ -13,42 +36,7 @@ if(empty($_SESSION['e']))
 
 <?php //require_once 'topbar.php'?>
 
-<?php
-include_once '../../Controller/adminC.php';
-include_once '../../Model/admin.php';
 
-
-$error = "";
-
-$admin = null;
-
-// create an instance of the controller
-$adminC = new adminC();
-if (
-
-    isset($_POST["username"]) &&
-    isset($_POST["password"]) &&
-    isset($_POST["email"])
-
-) {
-    if (
-        !empty($_POST["username"]) &&
-        !empty($_POST["password"]) &&
-        !empty($_POST["email"]) 
-    ) {
-        $Admin = new Admin(
-
-            $_POST['username'],
-            $_POST['password'],
-            $_POST['email']
-        );
-        $adminC->modifierAdmin($Admin, $_GET['id']);
-        header('refresh:2;url=afficherAdmin.php');
-    } else
-        echo "Missing information";
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -93,60 +81,60 @@ if (
 
                 <!-- Begin Page Content -->
 
-                <div id="error">
-                    <?php echo $error; ?>
-                </div>
+                
 
-                <?php
-                    if (isset($_GET['id'])) {
-                        $admin = $adminC->recupererAdmin($_GET['id']);
+
+</table>
+<button type="button" class="btn btn-primary mr-2" onclick ="window.print()">Imprimer</button> 
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Ajouter produit</h4>
+                  <p class="card-description">
+                    Formulaire pour ajouter un produit
+                  </p>
+                 
+                  <form class="forms-sample" action="" method="POST" >
+                  
+                      
+                      <div class="form-group">
+                      <input type="text" class="form-control" name="Nom" id="Nom" placeholder="Nom de produit" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="prix" id="prix"  min="1" step="any" max="99" placeholder="Prix" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="number" class="form-control" name="qty" id="qty"  min="1" step="any" max="99" placeholder="Quantité" required>
+                    </div>
+                    <div class="form-group">
+                    <label>Liste des categories :</label>
+                      <select name="categorie"  class="form-control">                         
+                        <?php
+                        foreach($categories as $item ){
+                        ?>
+                        <option value="<?php echo $item['id']; ?>"><?php echo $item['nomcat']; ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                    <label for="image">Attachez un image : </label>
+                      <input type="file" class="form-control" name="image" id="image" required>
+                    </div>
+                    <button type="submit" name="submit" class="btn btn-primary mr-2">Ajouter</button>
+                    <button type="reset" class="btn btn-light">Annuler</button>
                     
-                ?>
+                  </form>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                  </div>
+                
+    </body>
 
+</html>
 
-                <div class="container-fluid">
-
-                    <form method="post" action="" id="form">
-
-                        <div class="form-group">
-                            <label for="nom">Entrer le nom d'utilisateur de l'admin</label>
-                            <input type="text" class="form-control" name="username" id="username" value="<?PHP echo $admin['username']; ?>" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="prenom">Entrer le mot de passe de l'admin</label>
-                            <input type="text" class="form-control" name="password" id="password"  value="<?PHP echo $admin['password']; ?>" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="prenom">Retapez le mot de passe</label>
-                            <input type="text" class="form-control" name="confirmation" id="confirmation"  value="<?PHP echo $admin['password']; ?>" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="age">Entrer l'email de l'admin</label>
-                            <input type="text" class="form-control" name="email" id="email" value="<?PHP echo $admin['email']; ?>" required>
-                        </div>
-
-                        <button type="submit" value="Envoyer" class="btn btn-primary" onclick="verif();">Modifier</button>
-
-                    </form>
-                    <br>
-                    <div id="erreur"></div>
-
-                </div>
-                <!-- /.container-fluid -->
-
-            </div>
-            <!-- End of Main Content -->
-
-
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
 
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
@@ -181,11 +169,7 @@ if (
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    <?php
-        } else {
-            echo "error ";
-        }
-    ?>
+    
 </body>
 
 </html>

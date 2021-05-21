@@ -61,6 +61,36 @@
     </li>
 
     <li class="nav-item">
+
+<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLivraison" aria-expanded="true" aria-controls="collapseLivraison">
+    <i class=""></i>
+    <span>Livraisons</span>
+</a>
+<div id="collapseLivraison" class="collapse" aria-labelledby="headingLivraison" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Gérer Les livraisons</h6>
+        <a class="collapse-item" href="ajouterLivraison.php">Ajouter une livraison</a>
+        <a class="collapse-item" href="afficherLivraisons.php">Afficher les livraisons</a>
+    </div>
+</div> 
+
+
+<li class="nav-item">
+
+<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCommande" aria-expanded="true" aria-controls="collapseCommande">
+    <i class=""></i>
+    <span>Commandes</span>
+</a>
+<div id="collapseCommande" class="collapse" aria-labelledby="headingCommande" data-parent="#accordionSidebar">
+    <div class="bg-white py-2 collapse-inner rounded">
+        <h6 class="collapse-header">Gérer Les Commandes</h6>
+        <a class="collapse-item" href="ajouterCommande.php">Ajouter une Commande</a>
+        <a class="collapse-item" href="afficherCommandes.php">Afficher les Commandes</a>
+    </div>
+</div>
+
+
+    <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEvents" aria-expanded="true" aria-controls="collapseEvents">
                  <i class=""></i>
                  <span>Événements</span>
@@ -92,20 +122,7 @@
                  </div>
              </div>
      </li>
-     <li class="nav-item">
-             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseproduit" aria-expanded="true" aria-controls="collapseproduit">
-                 <i class=""></i>
-                 <span>Produit</span>
-             </a>
-             <div id="collapseproduit" class="collapse" aria-labelledby="headingproduit" data-parent="#accordionSidebar">
-                 <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Custom lieus:</h6>
-                     <a class="collapse-item" href="BackEndProduit.php">Ajouter produit</a>
-                     <a class="collapse-item" href="ModifierProduit.php">Modifier produit</a>
-
-                 </div>
-             </div>
-     </li>
+  
 
      <li class="nav-item">
              <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecommentaire" aria-expanded="true" aria-controls="collapsecommentaire">
@@ -115,7 +132,6 @@
              <div id="collapsecommentaire" class="collapse" aria-labelledby="headingcommentaire" data-parent="#accordionSidebar">
                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Custom commentaire:</h6>
-                     <a class="collapse-item" href="afficherCommentaires.php">afficher commentaire</a>
                      <a class="collapse-item" href="consultercommentaires.php">Satistique commentaire</a>
                      <a class="collapse-item" href="AjouterArticle.php">Ajouter commentaire</a>
 
@@ -136,6 +152,22 @@
                  </div>
              </div>
      </li>
+
+     <li class="nav-item">
+             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseproduit" aria-expanded="true" aria-controls="collapseproduit">
+                 <i class=""></i>
+                 <span>Produit</span>
+             </a>
+             <div id="collapseproduit" class="collapse" aria-labelledby="headingproduit" data-parent="#accordionSidebar">
+                 <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Custom like:</h6>
+                     <a class="collapse-item" href="ajouterproduit2.php">afficher produit</a>
+                   
+
+                 </div>
+             </div>
+     </li>
+
 
     <!-- Divider -->
     <hr class="sidebar-divider">

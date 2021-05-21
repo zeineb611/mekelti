@@ -66,13 +66,15 @@ if (isset($_POST["username"]) &&
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
-                        <!-- Nested Row within Card Body -->
+                 <br>
+                    <!-- Nested Row within Card Body -->
                         <div class="row">
-                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        
+                            <div class="col-lg-6 "><h1>      </h1><h1>    </h1><h1>    </h1><img src="img/logo.png" width="300" height="200"></div>
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back Mekelti !</h1>
                                     </div>
 
                                     <form class="user" method="post" action="" id="form">
